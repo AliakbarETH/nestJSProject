@@ -1,5 +1,8 @@
-import { Module } from "@nestjs/common";
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { DBContoroller } from './db.controller';
 
-@Module({})
-
-export class AppModule{}
+@Module({
+  controllers: [ AppController, DBContoroller],
+})
+export class AppModule {}

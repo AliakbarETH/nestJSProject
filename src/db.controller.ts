@@ -1,22 +1,30 @@
-import { Controller, Get, Param, Post, Req } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Req,
+} from '@nestjs/common';
 import { Request } from 'express';
 
-@Controller('db')
+@Controller()
 export class DBContoroller {
   @Get()
   getDB(): string {
     return 'Hi, I AM database';
   }
-  @Get('/:userID')
-  getUserID(@Param() params: {userID: number}) {
-    return params;
-  }
+  // @Get('/:userID')
+  // getUserID(@Param() params: { userID: number }) {
+  //   return params;
+  // }
   @Get('bro')
   getBro(): string {
     return ' I am the bro ';
   }
-  @Get('/:userID')
-  getUserID(@Param() params: {userID: number}) {
+  @Delete('/:userID')
+  deleteUserID(@Param() params: { userID: number }) {
     return params;
   }
 
@@ -26,5 +34,8 @@ export class DBContoroller {
     return req.body;
   }
 
-  
+  @Patch('/:userID')
+  update(@Req() req: Request) {
+    return req.body;
+  }
 }

@@ -7,6 +7,7 @@ import {
   Post,
   Req,
   Delete,
+  Body,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 
@@ -22,8 +23,8 @@ export class UserController {
   }
 
   @Post()
-  store(@Req() req: Request){
-    return this.userService.create(req);
+  store(@Body() body: any){
+    return this.userService.create(body);
   }
 
   @Patch('/:userID')
@@ -37,6 +38,6 @@ export class UserController {
   }
   @Delete('/:userID')
   deleteUser(@Param() param: { userID: number }) {
-    return this.userService.show(param);
+    return this.userService.delete(param);
   }
 }
